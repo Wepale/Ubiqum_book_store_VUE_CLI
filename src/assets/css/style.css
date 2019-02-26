@@ -1,0 +1,138 @@
+body {
+  overflow-y: scroll;
+}
+
+.mainHeader {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-gap: 1em;
+  margin: 4em 9em;
+}
+
+.header {
+  grid-column: 1/4;
+  grid-row: 1/2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.booksContainer {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: repeat(3, 1fr);
+  padding-top: 10vh;
+}
+
+.headerLeft {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+}
+
+.headerLeft img {
+  width: 25%;
+  justify-self: end;
+}
+
+.headerLeft h1 {
+  width: 12em;
+  max-height: 2em;
+}
+
+.logo {
+  display: flex;
+  justify-content: initial;
+  align-items: center;
+}
+
+.headerRight {
+  display: flex;
+  justify-content: end;
+}
+
+label, input {
+  height: 1.5em;
+  max-width: 25em;
+  width: 6em;
+}
+
+input {
+  width: 20em;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
+}
+
+label {
+  font-size: 1.5em;
+}
+
+.input {
+  display: flex;
+  justify-content: initial;
+  align-items: center;
+}
+
+.book {
+  width: 22em;
+  height: 32em;
+  perspective: 1000px;
+  background-color: transparent;
+}
+
+.book img {
+  width: 100%;
+  height: 100%;
+}
+
+/* .book {
+  background-color: transparent;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px;
+} */
+.flipContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.book:hover .flipContainer {
+  transform: rotateY(180deg);
+}
+
+.frontCover, .backCover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.frontCover {
+  background-color: #bbb;
+  color: black;
+}
+
+.backCover {
+  background-color: #555;
+  opacity: 0.8;
+  color: white;
+  transform: rotateY(180deg);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.backCover p, h3 {
+  padding: 2em;
+  font-size: 1.5em;
+  margin: 0;
+  font-weight: bold;
+}
