@@ -8,7 +8,7 @@
   </div>
   <div class="headerRight">
     <div class="input">
-      <label for="findBox">Find a book:</label>
+      <label for="findBox">Search:</label>
       <input id="findBox" type="text" ref="searchBox" :value="someText" @input="handleInput">
     </div>
   </div>
@@ -26,6 +26,7 @@ export default {
       someText: ""
     }
   },
+  //V-model works different on components. We need to emit the value of the imput
   methods: {
     handleInput (e) {
       this.$emit('input', this.$refs.searchBox.value)

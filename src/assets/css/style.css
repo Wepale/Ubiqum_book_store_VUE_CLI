@@ -2,6 +2,10 @@ body {
   overflow-y: scroll;
 }
 
+[v-cloak] {
+  display: none;
+}
+
 .mainHeader {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
@@ -49,20 +53,23 @@ body {
 
 .headerRight {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 label, input {
   height: 1.5em;
   max-width: 25em;
-  width: 6em;
+  width: 3.5em;
 }
 
 input {
-  width: 20em;
+  width: 13em;
   background: transparent;
   border: none;
   border-bottom: 1px solid #000000;
+  font-size: x-large;
+  position: relative;
+  bottom: 0.2em;
 }
 
 label {
@@ -87,13 +94,6 @@ label {
   height: 100%;
 }
 
-/* .book {
-  background-color: transparent;
-  width: 300px;
-  height: 200px;
-  border: 1px solid #f1f1f1;
-  perspective: 1000px;
-} */
 .flipContainer {
   position: relative;
   width: 100%;
@@ -120,8 +120,7 @@ label {
 }
 
 .backCover {
-  background-color: #555;
-  opacity: 0.8;
+  background-color: rgba(162, 152, 142, 0.8);
   color: white;
   transform: rotateY(180deg);
   text-align: center;
@@ -135,4 +134,9 @@ label {
   font-size: 1.5em;
   margin: 0;
   font-weight: bold;
+}
+
+.noResults {
+  grid-column: 2/3;
+  justify-self: center;
 }

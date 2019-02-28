@@ -7,7 +7,6 @@
     <div class="backCover">
       <h3>{{ someTitle }}</h3>
       <p>{{ someDescription }}</p>
-      <button type="button" name="button">Info</button>
     </div>
   </div>
 </div>

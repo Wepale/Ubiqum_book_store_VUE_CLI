@@ -1,14 +1,13 @@
 <template>
-  <div class="mainHeader">
-    <p>{{ userSearch }}</p>
-    <app-header v-model="userSearch"></app-header>
-    <div class = "booksContainer">
-      <book v-for="item of myBooks"
-      :book="item.cover"
-      :someTitle="item.title"
-      :someDescription="item.description"></book>
+<div class="mainHeader">
+  <app-header v-model="userSearch"></app-header>
+  <div class="booksContainer">
+    <div v-if="!myBooks.length && isLoaded" class="noResults">
+      <h2>No results</h2>
     </div>
+    <book v-for="item of myBooks" :key="item.title" :book="item.cover" :someTitle="item.title" :someDescription="item.description"></book>
   </div>
+</div>
 </template>
 
 <script>
@@ -25,7 +24,8 @@ export default {
     return {
       MY_BOOKS: [],
       myBooks: [],
-      userSearch: ""
+      userSearch: "",
+      isLoaded: false
     }
   },
   methods: {
@@ -41,28 +41,27 @@ export default {
 
       this.myBooks = this.MY_BOOKS = data.books;
       window.console.log(this.myBooks);
-
+      this.isLoaded = true;
     },
   },
   watch: {
+
+    /*
+     * This function filter the books if the tittle or description includes the user input
+     */
+
     userSearch() {
-      if(this.userSearch.length) {
+      if (this.userSearch.length) {
         this.myBooks = this.MY_BOOKS.filter(book => book.title.toLowerCase().includes(this.userSearch.toLowerCase()) ||
-                                                    book.description.toLowerCase().includes(this.userSearch.toLowerCase()));
+          book.description.toLowerCase().includes(this.userSearch.toLowerCase()));
       } else {
         this.myBooks = this.MY_BOOKS;
       }
-      window.console.log(this.myBooks)
     }
   },
-
+  //Fetch call
   created() {
     this.getData();
   },
-
-  updated() {
-    window.console.log("EY: " + this.userSearch)
-  }
-
 }
 </script>
